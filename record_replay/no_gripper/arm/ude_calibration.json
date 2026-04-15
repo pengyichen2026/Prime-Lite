@@ -1,0 +1,72 @@
+{
+    "left_shoulder_pitch": {
+        "id": 11,
+        "direction": -1,
+        "homing_offset": 3.0665571719417914
+    },
+    "left_shoulder_roll": {
+        "id": 12,
+        "direction": -1,
+        "homing_offset": 5.854184941449438
+    },
+    "left_shoulder_yaw": {
+        "id": 13,
+        "direction": 1,
+        "homing_offset": 2.9232813119888306
+    },
+    "left_elbow_pitch": {
+        "id": 14,
+        "direction": -1,
+        "homing_offset": 3.614013198019062
+    },
+    "left_wrist_yaw": {
+        "id": 15,
+        "direction": 1,
+        "homing_offset": 1.0523428916931152
+    },
+    "left_wrist_roll": {
+        "id": 16,
+        "direction": -1,
+        "homing_offset": 4.82355809211731
+    },
+    "left_wrist_pitch": {
+        "id": 17,
+        "direction": -1,
+        "homing_offset": 3.4822425842285156
+    },
+    "right_shoulder_pitch": {
+        "id": 21,
+        "direction": 1,
+        "homing_offset": 2.693141219018902
+    },
+    "right_shoulder_roll": {
+        "id": 22,
+        "direction": -1,
+        "homing_offset": 2.7386707504603525
+    },
+    "right_shoulder_yaw": {
+        "id": 23,
+        "direction": 1,
+        "homing_offset": 4.9265296459198
+    },
+    "right_elbow_pitch": {
+        "id": 24,
+        "direction": 1,
+        "homing_offset": 3.94011389911076
+    },
+    "right_wrist_yaw": {
+        "id": 25,
+        "direction": 1,
+        "homing_offset": 1.8659527897834778
+    },
+    "right_wrist_roll": {
+        "id": 26,
+        "direction": 1,
+        "homing_offset": 2.3507055044174194
+    },
+    "right_wrist_pitch": {
+        "id": 27,
+        "direction": -1,
+        "homing_offset": 5.803801774978638
+    }
+}
