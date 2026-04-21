@@ -1,105 +1,40 @@
-# oculus_reader
+`Oculus_Reader` 的主要作用是识别 `Quest` 的两个手柄，并将他们的信息发送到 $11005$ 端口。
 
-This repository provides the tool to read the position and pressed button from the Oculus Quest device.
+信息包括手柄的坐标与旋转，以及所有的按键是否按下还有 `Index Trigger` 和 `Grip Trigger` 两个按键的按压程度（0~1）。
 
-Oculus reader consits of two elements: python script which receives the readings from the APK and the APK itself. Currently the pose of the controllers and pressed buttons are transfered from the APK. This behavior can be extended using provided APK [source code](app_source).
+# 使用方法
 
-## Clone the repository
-
-To pull the APK correctly, Git LFS has to be configured before cloning the repository. The installation is described here https://git-lfs.github.com. On Ubuntu follow these steps:
+先将电脑与 `Quest` 头显连接，然后运行：
 
 ```bash
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install git-lfs
-git lfs install # has to be run only once on a single user account
+bash guide.sh
 ```
 
-Now you can clone this repository either with HTTPS or SSH.
-
-If you decide to use the HTTPS protocol, you can reduce the number of authentification prompts when pushing/pulling caused by Git LFS with:
+之后终端可能会出现：
 
 ```bash
-git config lfs.https://github.com/rail-berkeley/oculus_reader.git/info/lfs.locksverify false
+2G97C5ZH4T00SB	no permissions (missing udev rules? user is in the plugdev group); see [http://developer.android.com/tools/device.html]
+
+Device is visible but could not be accessed.
+Run `adb devices` to verify that the device is visible and accessible.
+If you see "no permissions" next to the device serial, please put on the Oculus Quest and allow the access.
 ```
 
-This command has to be run from the repository workspace.
+此时应该在 `Quest` 中点击 “通知”，之后点击 “检测到 USB” 使其关闭，最后再运行：
 
-## Setup of the ADB
-
-[ADB](https://developer.android.com/studio/command-line/adb) is required for the communication between Oculus Quest and the python reader script.
-
-To install ADB on Ubuntu run:
-
-```
-sudo apt install android-tools-adb
+```bash
+bash guide.sh
 ```
 
-On other systems follow the steps from the 'app_source' folder.
+当终端出现形如以下样式的信息，则 `Oculus_Reader` 部分运行成功。
 
-### Set up of a new Oculus Quest device
-
-1. Determine your Oculus Quest account name:
-If you haven’t used Oculus Quest before, start it and follow the steps to create your profile and get yourself started. Otherwise follow these steps to find out your username:
-    1. Go to: [https://www.oculus.com/](https://www.oculus.com/) 
-    2. Log in to account:
-    ![image_0](https://user-images.githubusercontent.com/14967831/106832581-c7288f00-6646-11eb-91e0-3b74e81a58ba.png)
-    3. After logging in **select your profile again** in top right corner and select **‘Profile’**
-    ![image_1](https://user-images.githubusercontent.com/14967831/106832585-c859bc00-6646-11eb-9a3d-3a55f844ee37.png)
-    4. You will be able to see your username on the following screen:
-    ![image_2](https://user-images.githubusercontent.com/14967831/106832678-f7702d80-6646-11eb-823e-1001d6bffe01.png)
-2. Enable Oculus Quest development mode:
-    1. If you belong to RAIL, inform me (Jedrzej Orbik) that you need to join the development organization. This is required to activate debugging mode on the device. Otherwise create your own organization <https://developer.oculus.com/manage/organizations/create/> and fill in the appropriate informaiton.
-    2. Turn on the device you want to use for development.
-    3. Open the Oculus app on your phone and then go to **Settings**.
-    4. Tap the device and then go to **More Settings** > **Developer Mode**.
-    5. Turn on the **Developer Mode** toggle.
-    6. Connect your device to your computer using a USB-C cable and then wear the device.
-    7. Accept **Allow USB Debugging** and **Always allow from this computer** when prompted to on the device.  
-        ![image_3](https://user-images.githubusercontent.com/14967831/104061507-048d2e80-51f9-11eb-8327-7917f6a1ab60.png)  
-    8. (Windows only) Install the Oculus ADB Drivers
-        1. Download [the zip file containing the driver](https://developer.oculus.com/downloads/package/oculus-adb-drivers/).
-        2. Unzip the file.
-        3. Right-click on the .inf file and select **Install**.
-
-## How to run the code
-
-If you intend to use the precompiled APK with the predefined behavior, where the position and the pressed buttons are transferred, please follow the steps from the [scripts folder](oculus_reader/README.md). If you plan to extend the app, please read the README from the [app_source folder](app_source/README.md).
-
-### Communication using the USB cable (easier to set up)
-
-1. Connect Oculus Quest to PC with USB cable. This is required to establish the connection.
-2. Run the exemplary file: `python oculus_reader/reader.py`
-3. (optionally) If ROS is installed on your machine, the current transformation can be visualized using the script [visualize_oculus_transforms.py](oculus_reader/visualize_oculus_transforms.py).
-
-### Communication over the network (more portable)
-
-1. Make sure that Oculus Quest is connected to the same network as the computer.
-2. Connect Oculus Quest to PC with USB cable. This is required to establish the connection.
-3. Put on the headset and allow the permission as requested.
-4. Verify that a device is visible with: `adb devices`. The expected output:  
-`List of devices attached`  
-`    ce0551e7                device`
-5. Check the IP address of the headset:  
-    `adb shell ip route`  
-    Expected output:  
-    `10.0.30.0/19 dev wlan0  proto kernel  scope link  **src **10.0.32.101`
-6. Read the IP address of the device standing after `**src`.
-7. Provide the IP address when creating OculusReader object.
-8. Run the exemplary file: `python oculus_reader/reader.py`
-9. (optionally) If ROS is installed on your machine, the current transformation can be visualized using the script [visualize_oculus_transforms.py](oculus_reader/visualize_oculus_transforms.py).
-
-### Stopping the app from adb
-It is possible to stop the app from adb. Use: `adb shell am force-stop com.rail.oculus.teleop`
-
-## Citation
-
-If you find this work helpful, please consider citing it using the following reference:
+```bash
+🚀 转发中... Quest -> BHL (UDP 11005)
+重要提示:
+1. 保持手柄静止后启动 BHL 控制脚本
+2. 启动后按下手柄侧键/A键进行 IK 重置(Rebase)
+3. 当前转发频率: 30Hz (已降低以适配 CAN 总线带宽)
+发送中... 左手(BHL坐标系): X:-0.35, Y:0.67, Z:0.359
 ```
-@misc{OrbikEbert2021OculusReader,
-  author = {Jedrzej Orbik, Frederik Ebert},
-  title = {Oculus Reader: Robotic Teleoperation Interface},
-  year = {2021},
-  url = {https://github.com/rail-berkeley/oculus_reader},
-  note = {Accessed: YYYY-MM-DD}
-}
-```
+
+**切记后续使用 teleop 的时候不要关闭该 `Oculus_Reader` 的终端！**
