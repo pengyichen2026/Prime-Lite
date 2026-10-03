@@ -71,7 +71,7 @@ bus_configs = generate_bus_config(2, 1)
 对于 Quest 手柄遥操作，需要同时运行以下两个终端：
 
 1. 在第一个终端中，按照 [Oculus Reader](https://github.com/pengyichen2026/Prime-Lite/tree/main/oculus_reader) 中的 “使用方法” 启动数据转发，将 Quest 手柄的位姿及按键信息发送至 UDP `11005` 端口。**遥操作期间，请保持该终端运行。**
-2. 在第二个终端中，按照 [Teleop](https://github.com/pengyichen2026/Prime-Lite/tree/main/teleop) 中的 “CAN Bring-Up” 和 “Calibration (Real Robot)” 说明完成 CAN 接口初始化及必要的机器人校准，再按照“SteamVR IK Teleop”部分的说明启动手柄遥操作程序。
+2. 在第二个终端中，按照 [Teleop](https://github.com/pengyichen2026/Prime-Lite/tree/main/teleop) 中的 “CAN Bring-Up” 和 “Calibration (Real Robot)” 说明完成 CAN 接口初始化及必要的机器人校准，再按照 “SteamVR IK Teleop” 部分的说明启动手柄遥操作程序。
 
 如需使用 键盘遥操作，请参阅 Teleop 中的 “Keyboard IK Teleop” 部分，无需启动 Oculus Reader。
 
