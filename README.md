@@ -1,4 +1,6 @@
-# 录制动作 & 回放动作
+本仓库提供 Prime-Lite 机器人的动作录制、回放与遥操作代码，以及配套的环境配置说明。
+
+# 动作录制 & 回放
 
 ## 使用方式
 
@@ -63,3 +65,10 @@ bus_configs = generate_bus_config(0, 1)
 ```py
 bus_configs = generate_bus_config(2, 1)
 ```
+
+# 遥操作
+
+对于 `Quest` 遥操作：
+
+1. 一个终端使用 [Oculus Reader](https://github.com/pengyichen2026/Prime-Lite/tree/main/oculus_reader) 当中的使用方式，将手柄的坐标信息传输到一个端口。
+2. 另一个终端使用 [Teleop](https://github.com/pengyichen2026/Prime-Lite/tree/main/teleop) 当中的说明进行初始化校准、键盘遥操作（对应 “Keyboard IK Teleop”）、手柄遥操作（对应 “SteamVR IK Teleop”）。
