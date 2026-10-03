@@ -1,4 +1,4 @@
-## CAN Bring-Up
+# CAN Bring-Up
 
 Bring up the default CAN interfaces:
 
@@ -11,7 +11,7 @@ The default mapping in this package is:
 - `left arm -> can0`
 - `right arm -> can1`
 
-## Calibration (Real Robot)
+# Calibration (Real Robot)
 
 Run:
 
@@ -25,7 +25,7 @@ This will connect to the robot, run calibration if no saved LeRobot calibration 
 ~/.cache/huggingface/lerobot/calibration/
 ```
 
-## Keyboard IK Teleop
+# Keyboard IK Teleop
 
 This repository also includes a second keyboard teleoperator that moves an end-effector target in Cartesian space and uses MuJoCo + Mink IK to solve joint positions for the real robot.
 
@@ -66,7 +66,7 @@ The viewer shows both the current end-effector frame and the commanded target fr
 relative to this repository's parent workspace. If your MJCF lives elsewhere, pass `--xml-path /abs/path/to/bhl_arm.xml`.
 
 
-## SteamVR IK Teleop
+# SteamVR IK Teleop
 
 This repository also includes a SteamVR teleoperator that listens for controller pose deltas over UDP, rebases those deltas to the robot's current end-effector pose, and solves dual-arm IK with MuJoCo + Mink.
 
@@ -89,7 +89,3 @@ uv run ./examples/teleop_bhl_arm_steamvr_ik.py \
 ```
 
 This listens for SteamVR packets on UDP `0.0.0.0:11005` by default. The viewer shows current and target end-effector frames for both arms.
-
-## Acknowledgement
-
-We would like to thank [DeepCybo](https://deepcybo.top/) and [Zhongguancun Academy (ZGCA)](https://www.bza.edu.cn/en/) for the collaboration and support.
